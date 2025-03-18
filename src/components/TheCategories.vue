@@ -7,120 +7,48 @@
         class="no-scrollbar flex space-x-3 overflow-auto text-sm whitespace-nowrap"
       >
         <a
+          v-for="category in categories"
+          :key="category"
           href="#"
           class="px-3 transition py-1 bg-gray-600 border border-gray-700 rounded-full hover:bg-gray-500 text-white"
         >
-          All
+          {{ category }}
         </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Trucks
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Tools
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Machines
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Engines
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Show
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Ships
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Roads
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Thanks
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Building
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Mars
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Tractors
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          TV Shows
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Football
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Planes
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Live
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Streets
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Math
-        </a>
-        <a
-          href="#"
-          class="px-3 transition py-1 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
-        >
-          Programming
-        </a>
+        
       </div>
     </div>
   </section>
 </template>
+
+
+<script>
+export default{
+  data() {
+    return {
+      categories: [
+        'All',
+        'Trucks',
+        'Tools',
+        'Machines',
+        'Engines',
+        'Show',
+        'Ships',
+        'Roads',
+        'Thanks',
+        'Building',
+        'Mars',
+        'Tractors',
+        'TV Shows',
+        'Football',
+        'Planes',
+        'Live',
+        'Streets',
+        'Math',
+        'Programming',
+      ]
+    }
+  },
+
+
+}
+</script>
