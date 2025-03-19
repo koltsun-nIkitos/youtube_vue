@@ -1,7 +1,7 @@
 <template>
   <a href="./channel.html" class="mb-7 group">
     <div class="relative">
-      <img :src="`/img/channels/channel${index}.jpg`" alt="Channel Image" />
+      <img :src="getImageUrl('channels', `channel${index}.jpg`)" alt="Channel Image" />
 
       <span
         class="opacity-0 group-hover:opacity-100 bg-opacity-60 absolute top-0 right-0 bg-black text-white rounded-sm m-1 p-1"
@@ -44,7 +44,7 @@
       <img
         class="mr-3 rounded-full w-9 h-9"
         width="68px"
-        :src="`./img/avatars/avatar${index}.jpg`"
+        :src="getImageUrl('avatars', `avatar${index}.jpg`)"
         alt=""
       />
       <div class="text-sm">
@@ -94,6 +94,14 @@
 
 <script>
   export default{
-    props: ['index']
+    props: ['index'],
+
+    methods: {
+      getImageUrl(folder, name) {
+        return new URL(`../assets/img/${folder}/${name}`, import.meta.url).href;
+      },
+    },
   }
+
+  
 </script>

@@ -6,14 +6,12 @@
       <div
         class="no-scrollbar flex space-x-3 overflow-auto text-sm whitespace-nowrap"
       >
-        <a
+        <CategoryItem 
           v-for="category in categories"
           :key="category"
-          href="#"
-          class="px-3 transition py-1 bg-gray-600 border border-gray-700 rounded-full hover:bg-gray-500 text-white"
-        >
-          {{ category }}
-        </a>
+          :category="category"
+          :is-active="category === 'All'"
+        />
         
       </div>
     </div>
@@ -22,7 +20,13 @@
 
 
 <script>
+import CategoryItem from './CategoryItem.vue';
+
 export default{
+  components:{
+    CategoryItem
+  },
+
   data() {
     return {
       categories: [
