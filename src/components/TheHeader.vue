@@ -43,6 +43,7 @@
       <button class="relative group p-2 focus-outline-none">
         <BaseIcon name="dotsVertical" class="w-5 h-5"/>
         
+        <!-- Выпадающий список -->
         <!-- <TheDropdownSettings /> -->
       </button>
 

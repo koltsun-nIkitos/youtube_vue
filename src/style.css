@@ -10,6 +10,6 @@
     scrollbar-width: none;  /* Firefox */
 }
 
-.border-b, .border-t{
+.border-b, .border-t, .border{
     border-color: #d1d5dc;
 }
