@@ -16,11 +16,7 @@
         />
       </div>
 
-      <div>
-        <span>{{ index }}K views</span>
-        &middot;
-        <span>{{ index }} day before</span>
-      </div>
+      <div v-html="summary"></div>
     </div>
 
     <button
@@ -50,5 +46,13 @@
     },
 
     props: ["index"],
+
+    computed: {
+      summary(){
+        const days = this.index === 1 ? 'day' : 'days'
+        return `${this.index}K views &middot; ${this.index} ${days} before`
+      },
+
+    },
   }
 </script>
