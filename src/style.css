@@ -13,3 +13,7 @@
 .border-b, .border-t, .border{
     border-color: #d1d5dc;
 }
+
+.bg-opacity-60{
+    background-color: rgba(0, 0, 0, 0.6);
+}
