@@ -1,6 +1,6 @@
 <template>
   <section
-    class="pt-14 md:pl-24 xl:pl-64 fixed bg-white z-10 w-full bg-opacity-95"
+    :class="classes"
   >
     <div class="border-t border-b py-3 px-4 max-w-screen-2xl m-auto">
       <div
@@ -25,6 +25,10 @@ import CategoryItem from './CategoryItem.vue';
 export default{
   components:{
     CategoryItem
+  },
+
+  props:{
+    isSidebarOpen: Boolean,
   },
 
   data() {
@@ -52,6 +56,20 @@ export default{
       ]
     }
   },
+
+  computed:{
+    classes(){
+      return [
+        this.isSidebarOpen ? 'xl:pl-64' : 'md:pl-30',
+        'pt-14', 
+        'fixed', 
+        'bg-white', 
+        'z-10', 
+        'w-full', 
+        'bg-opacity-95',
+      ]
+    }
+  }
 
 
 }

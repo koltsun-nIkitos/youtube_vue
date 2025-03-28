@@ -1,5 +1,5 @@
 <template>
-  <main class="md:ml-24 xl:ml-64 pt-32 px-5 sm:px-5 pb-5">
+  <main :class="classes">
     <div
       class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-4 2xl:grid-cols-5 max-w-screen-2xl m-auto"
     >
@@ -17,6 +17,22 @@
 
     components:{
       TheVideo
+    },
+
+    props:{
+      isSidebarOpen : Boolean,
+    },
+
+    computed:{
+      classes(){
+        return [
+          this.isSidebarOpen ? 'xl:ml-64' : 'md:ml-30',
+          'pt-32', 
+          'px-5', 
+          'sm:px-5', 
+          'pb-5',
+        ]
+      }
     }
 
   };

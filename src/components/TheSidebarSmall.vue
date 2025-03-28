@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="no-scrollbar xl:hidden hidden md:block min-h-screen overflow-auto fixed top-0 pt-14 bg-white z-20"
+    :class="classes"
   >
     <section>
       <ul>
@@ -120,3 +120,28 @@
     </section>
   </aside>
 </template>
+
+
+<script>
+export default{
+  props:{
+    isOpen: Boolean
+  },
+
+  computed:{
+    classes(){
+      return[
+        this.isOpen ? 'md:block' : 'hidden',
+        'min-h-screen', 
+        'no-scrollbar', 
+        'overflow-auto', 
+        'fixed ', 
+        'top-0',
+        'pt-14', 
+        'bg-white', 
+        'z-20',
+      ]
+    }
+  },
+}
+</script>

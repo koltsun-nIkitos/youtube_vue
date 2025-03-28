@@ -8,7 +8,7 @@
     leave-to-class="opacity-0"
   >
 
-    <TheSidebarMobileOverlay v-show="isOpen" @click="isOpen = false"> 
+    <TheSidebarMobileOverlay v-show="isOpen" @click="$emit('close')"> 
 
     </TheSidebarMobileOverlay>
   </transition>
@@ -21,11 +21,17 @@
     leave-from-class="translate-x-0"
     leave-to-class="-translate-x-full"
   >
-    <aside v-show="isOpen" class="no-scrollbar   w-64 max-h-screen overflow-auto bg-white fixed z-40">
+    <aside 
+      v-show="isOpen" 
+      ref="mobileSidebar"
+      @keydown.esc="$emit('close')" 
+      tabindex="-1"
+      class="no-scrollbar w-64 max-h-screen overflow-auto bg-white fixed z-40"
+    >
       <section
         class="flex items-center p-4 border-b sticky top-0 bg-white z-30"
       >
-        <button @click="isOpen = false" class="ml-2 mr-6 focus:outline-none">
+        <button @click="$emit('close')" class="ml-2 mr-6 focus:outline-none">
           <BaseIcon name="menu" />
         </button>
 
@@ -54,10 +60,24 @@ export default{
 
   },
 
-  data(){
-    return {
-      isOpen: true
-    }
+  props:{
+    isOpen: Boolean
   },
+
+  emits:{
+    close: null
+  },
+
+  watch:{
+    isOpen(){
+      this.$nextTick(() =>{
+        if(this.isOpen){
+          this.$refs.mobileSidebar.focus()
+        }
+      });
+    }
+
+  },
+
 }
 </script>
