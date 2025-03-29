@@ -1,37 +1,48 @@
 <template>
-  <div
-    class="opacity-0 group-hover:opacity-100 absolute top-9 -right-full sm:right-0 bg-white w-72 border border-t-0"
-  >
-    <section class="py-2 border-b">
-      <ul>
-        <DropdownSettingsListItem 
-          v-for="listItem in listItems.slice(0, 8)"
-          :key="listItem.label"
-          :icon="listItem.icon" 
-          :label="listItem.label" 
-          :with-sub-menu="listItem.withSubMenu"
-        />
+  <div class="relative">
+    <button @click="isOpen = !isOpen" class="relative  p-2 focus-outline-none">
+        <BaseIcon name="dotsVertical" class="w-5 h-5"/>
+    </button>
 
-        <!-- <DropdownSettingsListItem  label="Apperance: Light" with-sub-menu/>
-        <DropdownSettingsListItem  label="Language: English" with-sub-menu/>
-        <DropdownSettingsListItem  label="Location: Russia" with-sub-menu/>
-        <DropdownSettingsListItem  label="Settings"/>
-        <DropdownSettingsListItem  label="You data in YouTube"/>
-        <DropdownSettingsListItem  label="Help"/>
-        <DropdownSettingsListItem  label="Send feedback"/>
-        <DropdownSettingsListItem label="Keyboard shortcuts"/> -->
-      </ul>
-    </section>
+    <!-- Выпадающий список -->
+    <transition
+      enter-active-class="transition ease-out duration-100"
+      enter-from-class="transition opacity-0 scale-95"
+      enter-to-class="transform opacity-100 scale-100"
+      leave-active-class="transition ease-in duraton-75"
+      leave-from-class="transform opacity-100 scale-100"
+      leave-to-class="transform opacity-0 scale-95"
+    >
+      <div
+        v-show="isOpen"
+        class="absolute top-9 -right-full sm:right-0 bg-white w-72 border border-t-0"
+      >
+        <section class="py-2 border-b">
+          <ul>
+            <DropdownSettingsListItem 
+              v-for="listItem in listItems.slice(0, 8)"
+              :key="listItem.label"
+              :icon="listItem.icon" 
+              :label="listItem.label" 
+              :with-sub-menu="listItem.withSubMenu"
+            />
 
-    <section class="py-2">
-      <ul>
-        <DropdownSettingsListItem  
-          :label="listItems[8].label" 
-          :with-sub-menu="listItems[8].withSubMenu"
-        />
-      </ul>
-    </section>
+          </ul>
+        </section>
+
+        <section class="py-2">
+          <ul>
+            <DropdownSettingsListItem  
+              :label="listItems[8].label" 
+              :with-sub-menu="listItems[8].withSubMenu"
+            />
+          </ul>
+        </section>
+      </div>
+    </transition>
   </div>
+
+  
 </template>
 
 
@@ -47,6 +58,8 @@ export default{
 
   data() {
     return {
+      isOpen : false,
+
       listItems: [
         {
           icon:"sun",
@@ -95,6 +108,14 @@ export default{
         },
       ]
     }
+  },
+
+  mounted(){
+    window.addEventListener('click', event =>{
+      if (!this.$el.contains(event.target)){
+        this.isOpen = false
+      }
+    })
   },
 }
 </script>

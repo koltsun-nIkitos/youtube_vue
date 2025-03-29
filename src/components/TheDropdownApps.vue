@@ -1,40 +1,75 @@
 <template>
-  <div
-    class="opacity-0 group-hover:opacity-100 absolute top-9 right-0 sm:left-0 bg-white w-60 border border-t-0"
-  >
-    <section class="py-2 border-b">
-      <ul>
-        <DropdownAppsListItem label="YouTube TV"/>
-      </ul>
-    </section>
+  <div class="relative">
+    <button @click="isOpen = !isOpen" class="relative group p-2 focus-outline-none">
+        <BaseIcon name="viewGrid" class="w-5 h-5" viewBox="0 0 28 28"/>
+    </button>
 
-    <section class="py-2 border-b">
-      <ul>
-        <DropdownAppsListItem label="YouTube Music"/>
+    <!-- Выпадающий список -->
+    <transition
+      enter-active-class="transition ease-out duration-100"
+      enter-from-class="transition opacity-0 scale-95"
+      enter-to-class="transform opacity-100 scale-100"
+      leave-active-class="transition ease-in duration-75"
+      leave-from-class="transform opacity-100 scale-100"
+      leave-to-class="transform opacity-0 scale-95"
+    >
+      <div
+        v-show="isOpen"
+        class="absolute top-9 right-0 sm:left-0 bg-white w-60 border border-t-0"
+      >
+        <section class="py-2 border-b">
+          <ul>
+            <DropdownAppsListItem label="YouTube TV"/>
+          </ul>
+        </section>
 
-        <DropdownAppsListItem label="YouTube Kids"/>
-      </ul>
-    </section>
+        <section class="py-2 border-b">
+          <ul>
+            <DropdownAppsListItem label="YouTube Music"/>
 
-    <section class="py-2">
-      <ul>
+            <DropdownAppsListItem label="YouTube Kids"/>
+          </ul>
+        </section>
 
-        <DropdownAppsListItem label="Creator Academy"/>
+        <section class="py-2">
+          <ul>
 
-        <DropdownAppsListItem label="YouTube for Artists"/>
-        
-      </ul>
-    </section>
+            <DropdownAppsListItem label="Creator Academy"/>
+
+            <DropdownAppsListItem label="YouTube for Artists"/>
+            
+          </ul>
+        </section>
+      </div>
+    </transition>
+    
   </div>
+  
 </template>
 
 
 <script>
   import DropdownAppsListItem from './DropdownAppsListItem.vue';
+  import BaseIcon from './BaseIcon.vue';
 
   export default{
     components:{
       DropdownAppsListItem,
+      BaseIcon
+    },
+
+    data(){
+      return{
+        isOpen: false
+      }
+    },
+
+    mounted(){
+      window.addEventListener('click', event =>{
+        if (!this.$el.contains(event.target)){
+          this.isOpen = false
+        }
+      })
     },
 
   }

@@ -35,19 +35,13 @@
         <BaseIcon name="search" class="w-5 h-5"/>
       </button>
 
-      <button class="relative group p-2 focus-outline-none">
-        <BaseIcon name="viewGrid" class="w-5 h-5" viewBox="0 0 28 28"/>
-        
-        <!-- Выпадающий список -->
-        <!-- <TheDropdownApps /> -->
-      </button>
+      <!-- Выпадающий список -->
+      <TheDropdownApps />
 
-      <button class="relative group p-2 focus-outline-none">
-        <BaseIcon name="dotsVertical" class="w-5 h-5"/>
-        
-        <!-- Выпадающий список -->
-        <!-- <TheDropdownSettings /> -->
-      </button>
+      <!-- Выпадающий список -->
+      <TheDropdownSettings />
+
+      
 
       <ButtonLogin />
     </div>
