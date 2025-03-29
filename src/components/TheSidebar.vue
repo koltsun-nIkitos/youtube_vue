@@ -14,14 +14,9 @@
 
     },
 
-    props: {
-      isOpen: Boolean,
-    },
-
     computed: {
       classes(){
         return [
-          this.isOpen ? 'xl:block' : 'hidden',
           'no-scrollbar', 
           'w-64', 
           'max-h-screen', 
