@@ -5,24 +5,10 @@
       alt="Channel Image"
     />
 
-    <span
-      class="opacity-0 group-hover:opacity-100 bg-opacity-60 absolute top-0 right-0 bg-black text-white rounded-sm m-1 p-1"
-    >
-    
-      <BaseIcon
-        name="clock"
-        class="w-6 h-6"
-      />
-    </span>
+    <VideoThumbnailButton icon="clock" label="watch later" class="top-0"/>
 
-    <span
-      class="opacity-0 group-hover:opacity-100 bg-opacity-60 absolute top-9 right-0 bg-black text-white rounded-sm m-1 p-1"
-    >
-      <BaseIcon
-        name="menuAlt3"
-        class="w-6 h-6"
-      />
-    </span>
+    <VideoThumbnailButton icon="menuAlt3" label="Add to queque" class="top-10"/>
+
 
     <span class="opacity-100 group-hover:opacity-0 duration-500 bg-opacity-60 absolute bottom-0 right-0 bg-black text-white rounded-sm m-1 p-1 text-sm font-semibold">
       6:35
@@ -32,10 +18,12 @@
 
 <script>
   import BaseIcon from './BaseIcon.vue';
+  import VideoThumbnailButton from './VideoThumbnailButton.vue';
 
   export default{
     components:{
       BaseIcon,
+      VideoThumbnailButton
     },
 
   methods: {
