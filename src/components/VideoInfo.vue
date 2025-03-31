@@ -19,24 +19,19 @@
       <div v-html="summary"></div>
     </div>
 
-    <button
-      class="ml-auto -mt-1 p-1 opacity-0 group-hover:opacity-100 text-gray-500 hover:text-gray-700 focus:outline-none"
-    >
-      <BaseIcon 
-        class="w-6 h-6"
-        name="dotsVertical"
-      />
-    </button>
+    <VideoDropdown />
   </div>
 </template>
 
 
 <script>
   import BaseIcon from './BaseIcon.vue';
+  import VideoDropdown from './VideoDropdown.vue';
 
   export default{
     components: {
       BaseIcon,
+      VideoDropdown,
     },
 
     methods: {

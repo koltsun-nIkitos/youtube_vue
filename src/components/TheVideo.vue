@@ -1,5 +1,5 @@
 <template>
-  <a href="./channel.html" class="mb-7 group">
+  <a href="#" class="mb-7 group">
     <VideoThumbnail :index="index"/>
     
     <VideoInfo :index="index"/>
