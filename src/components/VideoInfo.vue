@@ -7,13 +7,17 @@
     <div class="text-sm">
       <span class="font-semibold text-gray-800">Video title {{ index }}</span>
 
-      <div class="mt-1 flex items-center">
-        <span>Chanel name {{ index }}</span>
+      <div class="mt-1 flex">
+        <BaseTooltip text="channelName" top>
+          <span>{{ channelName }}</span>
+        </BaseTooltip>
 
-        <BaseIcon 
-          class="w-3.5 h-3.5 ml-1"
-          name="checkCircle"
-        />
+        <BaseTooltip text="Verified" top>
+          <BaseIcon 
+            class="w-3.5 h-3.5 ml-1"
+            name="checkCircle"
+          />
+        </BaseTooltip>
       </div>
 
       <div v-html="summary"></div>
@@ -27,11 +31,19 @@
 <script>
   import BaseIcon from './BaseIcon.vue';
   import VideoDropdown from './VideoDropdown.vue';
+  import BaseTooltip from './BaseTooltip.vue'
 
   export default{
+    data(){
+      return{
+        channelName: `Chanel name ${this.index}`,
+      }
+    },
+
     components: {
       BaseIcon,
       VideoDropdown,
+      BaseTooltip,
     },
 
     methods: {

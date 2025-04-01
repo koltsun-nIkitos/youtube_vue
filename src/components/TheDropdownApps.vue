@@ -1,8 +1,11 @@
 <template>
   <div class="relative">
-    <button @click="isOpen = !isOpen" class="relative group p-2 focus-outline-none">
-        <BaseIcon name="viewGrid" class="w-5 h-5" viewBox="0 0 28 28"/>
-    </button>
+    <BaseTooltip text="YouTube apps">
+      <button @click="isOpen = !isOpen" class="relative group p-2 focus-outline-none">
+          <BaseIcon name="viewGrid" class="w-5 h-5" viewBox="0 0 28 28"/>
+      </button>
+    </BaseTooltip>
+    
 
     <!-- Выпадающий список -->
     <transition
@@ -18,7 +21,7 @@
         ref="dropdown"
         @keydown.esc="isOpen = false" 
         tabindex="-1"
-        class="absolute top-9 right-0 sm:left-0 bg-white w-60 border border-t-0 focuse:outline-none"
+        :class="dropdownClasses"
       >
         <section class="py-2 border-b">
           <ul>
@@ -54,11 +57,13 @@
 <script>
   import DropdownAppsListItem from './DropdownAppsListItem.vue';
   import BaseIcon from './BaseIcon.vue';
+  import BaseTooltip from './BaseTooltip.vue';
 
   export default{
     components:{
       DropdownAppsListItem,
-      BaseIcon
+      BaseIcon,
+      BaseTooltip
     },
 
     data(){
@@ -83,6 +88,23 @@
           this.isOpen = false
         }
       })
+    },
+
+    computed:{
+      dropdownClasses(){
+        return[
+          'z-10', 
+          'absolute', 
+          'top-9', 
+          'right-0', 
+          'sm:left-0', 
+          'bg-white', 
+          'w-60', 
+          'border', 
+          'border-t-0', 
+          'focuse:outline-none',
+        ]
+      }
     },
 
   }
