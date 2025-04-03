@@ -2,7 +2,7 @@
   <section
     :class="classes"
   >
-    <div class="border-t border-b py-3 px-4 max-w-screen-2xl m-auto">
+    <div class="bg-white bg-opacity-95 border-t border-b py-3 px-4 max-w-screen-2xl m-auto">
       <div
         class="no-scrollbar flex space-x-3 overflow-auto text-sm whitespace-nowrap"
       >
@@ -59,15 +59,7 @@ export default{
 
   computed:{
     classes(){
-      return [
-        this.isSidebarOpen ? 'xl:pl-64' : 'md:pl-30',
-        'pt-14', 
-        'fixed', 
-        'bg-white', 
-        'z-10', 
-        'w-full', 
-        'bg-opacity-95',
-      ]
+      return this.isSidebarOpen ? 'xl:pl-64' : 'md:pl-30'
     }
   }
 
