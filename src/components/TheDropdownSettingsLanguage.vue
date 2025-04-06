@@ -1,20 +1,18 @@
 <template>
   <DropdownSettingsHeader
-    title="Appearance"
+    title="Choose your language"
     @back="$emit('select-menu', 'main')"
   />
 
   <section class="py-2">
-    <div class="text-gray-500 text-xs p-3">
-      Settings applies to this browser only
-    </div>
-    <ul>
+    
+    <ul class="max-h-96 overflow-auto">
       <DropdownSettingsListItem
-        v-for="(themeName, themeId) in themes"
-        :key="themeId"
-        :label="themeName"
-        :active="themeId === selectedThemeId"
-        @click="selectedThemeId = themeId"
+        v-for="(languageName, languageId) in languages"
+        :key="languageId"
+        :label="languageName"
+        :active="languageId === selectedLanguageId"
+        @click="selectedLanguageId = languageId"
       />
     </ul>
   </section>
@@ -36,8 +34,8 @@ export default {
 
   data() {
     return {
-      selectedThemeId: 0,
-      themes: ["Use device theme", "Dark theme", "Light theme"],
+      selectedLanguageId: 0,
+      languages: ["English", "Russian"],
     };
   },
 };

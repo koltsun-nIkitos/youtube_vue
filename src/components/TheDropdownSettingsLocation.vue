@@ -1,20 +1,17 @@
 <template>
   <DropdownSettingsHeader
-    title="Appearance"
+    title="Choose your location"
     @back="$emit('select-menu', 'main')"
   />
 
   <section class="py-2">
-    <div class="text-gray-500 text-xs p-3">
-      Settings applies to this browser only
-    </div>
-    <ul>
+    <ul class="max-h-96 overflow-auto">
       <DropdownSettingsListItem
-        v-for="(themeName, themeId) in themes"
-        :key="themeId"
-        :label="themeName"
-        :active="themeId === selectedThemeId"
-        @click="selectedThemeId = themeId"
+        v-for="(locationName, locationId) in locations"
+        :key="locationId"
+        :label="locationName"
+        :active="locationId === selectedLocationId"
+        @click="selectedLocationId = locationId"
       />
     </ul>
   </section>
@@ -30,14 +27,15 @@ export default {
     DropdownSettingsListItem,
   },
 
-  emits:[
-    'select-menu'
-  ],
+  emits: ["select-menu"],
 
   data() {
     return {
-      selectedThemeId: 0,
-      themes: ["Use device theme", "Dark theme", "Light theme"],
+      selectedLocationId: 0,
+      locations: [
+        "United States",
+        "Russia",
+      ],
     };
   },
 };
