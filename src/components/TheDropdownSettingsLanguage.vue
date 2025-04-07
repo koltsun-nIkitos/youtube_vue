@@ -1,7 +1,7 @@
 <template>
   <DropdownSettingsHeader
     title="Choose your language"
-    @back="$emit('select-menu', 'main')"
+    @back="$emit('close')"
   />
 
   <section class="py-2">
@@ -11,8 +11,8 @@
         v-for="(languageName, languageId) in languages"
         :key="languageId"
         :label="languageName"
-        :active="languageId === selectedLanguageId"
-        @click="selectedLanguageId = languageId"
+        :active="languageId === selectedOptions.language.id"
+        @click="selectOption({id: languageId, text: languageName})"
       />
     </ul>
   </section>
@@ -28,15 +28,26 @@ export default {
     DropdownSettingsListItem,
   },
 
+  props: ['selectedOptions'],
+
   emits:[
-    'select-menu'
+    'close',
+    'select-option'
   ],
 
   data() {
     return {
-      selectedLanguageId: 0,
       languages: ["English", "Russian"],
     };
   },
+
+  methods:{
+    selectOption(language){
+      this.$emit('select-option', {
+        name: 'language',
+        value: language
+      })
+    }
+  }
 };
 </script>

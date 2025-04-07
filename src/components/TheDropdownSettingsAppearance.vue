@@ -1,8 +1,5 @@
 <template>
-  <DropdownSettingsHeader
-    title="Appearance"
-    @back="$emit('select-menu', 'main')"
-  />
+  <DropdownSettingsHeader title="Appearance" @back="$emit('close')" />
 
   <section class="py-2">
     <div class="text-gray-500 text-xs p-3">
@@ -13,8 +10,8 @@
         v-for="(themeName, themeId) in themes"
         :key="themeId"
         :label="themeName"
-        :active="themeId === selectedThemeId"
-        @click="selectedThemeId = themeId"
+        :active="themeId === selectedOptions.theme.id"
+        @click="selectOption({ id: themeId, text: themeName })"
       />
     </ul>
   </section>
@@ -30,15 +27,24 @@ export default {
     DropdownSettingsListItem,
   },
 
-  emits:[
-    'select-menu'
-  ],
+  props: ["selectedOptions"],
+
+  emits: ["close", "select-option"],
 
   data() {
     return {
-      selectedThemeId: 0,
-      themes: ["Use device theme", "Dark theme", "Light theme"],
+      themes: ["Device theme", "Dark theme", "Light theme"],
     };
+  },
+
+  methods: {
+    selectOption(theme) {
+      this.$emit("select-option", {
+        name: "theme",
+        value: theme,
+      });
+      // this.selectedThemeId = themeId
+    },
   },
 };
 </script>
